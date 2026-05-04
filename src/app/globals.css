@@ -270,6 +270,33 @@
   --khuzama-pivot: #7851A9;
   --khuzama-light: #B19CD9;
   --khuzama-mist: #E6E0F4;
+
+  /* Redefine the Osoul color tokens to point at khuzama equivalents inside
+     this scope only. This makes shared utilities (bg-osoul-pivot,
+     text-osoul-deep, hover:text-osoul-pivot, ring-osoul-pivot, etc.)
+     cascade automatically — the Header, Logo, LocaleSwitcher and Footer
+     pick up the khuzama palette without modification, so /1–/5 and the
+     canonical home stay byte-stable. */
+  --color-osoul-deep: var(--khuzama-deep);
+  --color-osoul-pivot: var(--khuzama-royal);
+  --color-osoul-turquoise: var(--khuzama-light);
+
+  /* Match the page's REGA / focus tokens to khuzama too */
+  --primary: var(--khuzama-royal);
+  --ring: var(--khuzama-royal);
+}
+
+/* The text-osoul-gradient utility's gradient stops are hex literals (not
+   tokens), so override its background-image directly inside /6. The Logo
+   wordmark uses this utility, so this single rule re-stripes the logo to
+   khuzama on /6 and nowhere else. */
+[data-variant="khuzama"] .text-osoul-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--khuzama-light) 0%,
+    var(--khuzama-royal) 50%,
+    var(--khuzama-deep) 100%
+  );
 }
 
 @utility bg-khuzama-gradient {

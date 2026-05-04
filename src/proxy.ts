@@ -5,16 +5,34 @@ import { routing } from "./i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 /**
- * Wraps next-intl's middleware so locale-redirect Location headers never
- * leak the container's internal bind port. Platforms like Railway terminate
- * SSL at the edge and forward to the container on a non-public port (e.g.
- * 8080); next-intl, building Location from `request.url`, copies that port
- * into the redirect. We rebuild the Location with the public host (from
- * X-Forwarded-Host when present) and force-strip the port, then carry the
- * X-Forwarded-Proto. No-op on local dev / Vercel where ports are absent.
+ * Wraps next-intl's middleware to do two things:
+ *
+ * 1. Set `x-osoul-pathname` on the request so server-component layouts can
+ *    read the live pathname via `headers()`. The locale layout uses this to
+ *    scope variant-specific styling (e.g. /6's khuzama palette) to <body>
+ *    regardless of where the variant renders in the segment tree.
+ *
+ * 2. Strip the container's internal bind port from locale-redirect Location
+ *    headers. Platforms like Railway terminate SSL at the edge and forward
+ *    to the container on a non-public port (e.g. 8080); next-intl, building
+ *    Location from `request.url`, copies that port into the redirect. We
+ *    rebuild the Location with the public host (from X-Forwarded-Host when
+ *    present) and force-strip the port, then carry X-Forwarded-Proto. No-op
+ *    on local dev / Vercel where ports are absent.
  */
 export default function proxy(request: NextRequest): NextResponse {
   const response = intlMiddleware(request);
+
+  // Forward pathname into the request that reaches Next's rendering pipeline.
+  // We mutate the response's request-header passthrough so it survives the
+  // hand-off into server components.
+  response.headers.set("x-middleware-request-x-osoul-pathname", request.nextUrl.pathname);
+  const existingOverrides = response.headers.get("x-middleware-override-headers");
+  response.headers.set(
+    "x-middleware-override-headers",
+    existingOverrides ? `${existingOverrides},x-osoul-pathname` : "x-osoul-pathname",
+  );
+
   if (response.status !== 307 && response.status !== 308) return response;
 
   const location = response.headers.get("location");

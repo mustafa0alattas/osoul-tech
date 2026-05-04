@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -47,6 +48,13 @@ export default async function LocaleLayout({
 
   const dir = locale === "ar" ? "rtl" : "ltr";
 
+  // Read pathname injected by proxy.ts middleware; used to scope variant
+  // palettes (e.g. /6 khuzama) to <body> so the shared Header / Footer
+  // inherit the override without modification.
+  const requestHeaders = await headers();
+  const pathname = requestHeaders.get("x-osoul-pathname") ?? "";
+  const variantAttr = /^\/(?:ar|en)\/6(?:\/|$)/.test(pathname) ? "khuzama" : undefined;
+
   const t = await getTranslations({ locale, namespace: "Seo" });
   const tA11y = await getTranslations({ locale, namespace: "A11y" });
 
@@ -87,7 +95,10 @@ export default async function LocaleLayout({
       className={`${plexSans.variable} ${plexSansArabic.variable}`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col bg-background font-sans text-foreground">
+      <body
+        data-variant={variantAttr}
+        className="flex min-h-screen flex-col bg-background font-sans text-foreground"
+      >
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[60] focus:inline-flex focus:items-center focus:rounded-md focus:bg-osoul-pivot focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-paper focus:shadow-rest focus:outline-none focus:ring-3 focus:ring-osoul-pivot/40"
