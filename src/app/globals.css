@@ -248,3 +248,14 @@
     transform: scaleX(-1);
   }
 }
+
+/* Arabic typography guard.
+   Arabic glyphs use contextual joining (init/medi/fina/calt forms); any non-zero
+   letter-spacing visibly breaks the shaping. Tailwind heading utilities apply
+   tight tracking like -0.01em which is fine for Latin but harmful for Arabic.
+   This rule is unlayered so it wins over @layer utilities regardless of
+   specificity, and uses :where() to keep specificity flat for easy override. */
+:lang(ar) :where(h1, h2, h3, h4, h5, h6),
+[dir="rtl"] :where(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: 0;
+}
