@@ -253,6 +253,52 @@
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────
+   Khuzama palette — scoped to /6 ONLY via [data-variant="khuzama"].
+
+   This is a deliberate, one-off departure from the Osoul blue/teal anti-
+   reference against purple (see PRODUCT.md). Justified because the
+   Khuzama (الخزامى) lavender is the official Saudi ceremonial palette
+   adopted by Royal Protocol in 2021, used on state reception carpets
+   and as the Riyadh Air primary brand color. It is not a Western SaaS
+   purple — it is a Saudi cultural signature. It MUST NOT propagate to
+   any other route, hence the attribute scope.
+   ───────────────────────────────────────────────────────────────────── */
+[data-variant="khuzama"] {
+  --khuzama-deep: #3D2C8D;
+  --khuzama-royal: #6B4FA0;
+  --khuzama-pivot: #7851A9;
+  --khuzama-light: #B19CD9;
+  --khuzama-mist: #E6E0F4;
+}
+
+@utility bg-khuzama-gradient {
+  background-image: linear-gradient(135deg, #B19CD9 0%, #7851A9 50%, #3D2C8D 100%);
+}
+
+/* Hero conic shimmer — slow rotation, prefers-reduced-motion stops it.
+   Lives at the [data-variant="khuzama"] hero only; defined here so the
+   keyframe sits alongside other osoul-* keyframes. */
+@property --khuzama-shimmer-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes khuzama-shimmer {
+  to { --khuzama-shimmer-angle: 360deg; }
+}
+
+@utility animate-khuzama-shimmer {
+  animation: khuzama-shimmer 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-khuzama-shimmer {
+    animation: none !important;
+  }
+}
+
 /* Arabic typography guard.
    Arabic glyphs use contextual joining (init/medi/fina/calt forms); any non-zero
    letter-spacing visibly breaks the shaping. Tailwind heading utilities apply
