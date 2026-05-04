@@ -38,7 +38,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side={side} className="flex w-72 flex-col gap-6 p-6">
         <SheetHeader className="p-0 text-start">
-          <SheetTitle className="text-osoul-gradient text-xl font-bold">
+          <SheetTitle className="text-brand-gradient text-xl font-bold">
             {t("Brand.name")}
           </SheetTitle>
         </SheetHeader>
@@ -49,7 +49,7 @@ export function MobileNav() {
               key={item.key}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2 text-base font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-osoul-pivot"
+              className="rounded-md px-3 py-2 text-base font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-brand-link-hover"
             >
               {t(`Nav.${item.key}`)}
             </Link>
@@ -62,7 +62,7 @@ export function MobileNav() {
             onClick={() => setOpen(false)}
             className={cn(
               buttonVariants({ size: "lg" }),
-              "h-12 w-full bg-osoul-pivot font-semibold text-paper shadow-rest transition-colors hover:bg-osoul-pivot/90",
+              "h-12 w-full bg-brand-cta font-semibold text-paper shadow-rest transition-colors hover:bg-brand-cta-hover",
             )}
           >
             {t("CTA.registerInterest")}

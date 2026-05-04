@@ -21,7 +21,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:bg-muted hover:text-osoul-pivot"
+                className="rounded-md px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:bg-muted hover:text-brand-link-hover"
               >
                 {t(`Nav.${item.key}`)}
               </Link>
@@ -35,7 +35,7 @@ export function Header() {
             href="/register-interest"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "hidden h-10 bg-osoul-pivot px-4 font-semibold text-paper shadow-rest transition-colors hover:bg-osoul-pivot/90 sm:inline-flex",
+              "hidden h-10 bg-brand-cta px-4 font-semibold text-paper shadow-rest transition-colors hover:bg-brand-cta-hover sm:inline-flex",
             )}
           >
             {t("CTA.registerInterest")}

@@ -16,7 +16,7 @@ export function Logo({ className }: LogoProps) {
       className={cn("inline-flex items-center gap-2", className)}
       aria-label={t("name")}
     >
-      <span className="text-osoul-gradient text-xl font-bold tracking-tight sm:text-2xl">
+      <span className="text-brand-gradient text-xl font-bold tracking-tight sm:text-2xl">
         {t("name")}
       </span>
     </Link>

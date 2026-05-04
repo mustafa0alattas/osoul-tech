@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* About */}
           <div className="space-y-3">
-            <h3 className="text-lg font-bold text-osoul-deep">
+            <h3 className="text-brand-gradient text-lg font-bold">
               {t("Brand.name")}
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
@@ -30,7 +30,7 @@ export function Footer() {
                 <li key={item.key}>
                   <Link
                     href={item.href}
-                    className="text-muted-foreground transition-colors hover:text-osoul-pivot"
+                    className="text-muted-foreground transition-colors hover:text-brand-link-hover"
                   >
                     {t(`Nav.${item.key}`)}
                   </Link>
@@ -46,7 +46,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-muted-foreground transition-colors hover:text-osoul-pivot"
+                  className="text-muted-foreground transition-colors hover:text-brand-link-hover"
                 >
                   {t("Footer.legalPrivacy")}
                 </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-muted-foreground transition-colors hover:text-osoul-pivot"
+                  className="text-muted-foreground transition-colors hover:text-brand-link-hover"
                 >
                   {t("Footer.legalTerms")}
                 </Link>
@@ -62,7 +62,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/risks"
-                  className="text-muted-foreground transition-colors hover:text-osoul-pivot"
+                  className="text-muted-foreground transition-colors hover:text-brand-link-hover"
                 >
                   {t("Footer.legalRisks")}
                 </Link>
@@ -77,7 +77,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:hello@osoul.tech"
-                  className="transition-colors hover:text-osoul-pivot"
+                  className="transition-colors hover:text-brand-link-hover"
                 >
                   hello@osoul.tech
                 </a>
@@ -85,7 +85,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/register-interest"
-                  className="transition-colors hover:text-osoul-pivot"
+                  className="transition-colors hover:text-brand-link-hover"
                 >
                   {t("CTA.registerInterest")}
                 </Link>
@@ -97,7 +97,7 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <ShieldCheck
-              className="size-4 text-osoul-pivot"
+              className="size-4 text-brand-cta"
               aria-hidden="true"
             />
             <span>{t("Footer.regaSandbox")}</span>
