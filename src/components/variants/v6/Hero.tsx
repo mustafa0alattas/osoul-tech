@@ -50,7 +50,7 @@ export function KhuzamaHero() {
             className="mt-7 text-balance leading-[1.05]"
             style={{
               fontFamily: DISPLAY_FONT,
-              fontWeight: 800,
+              fontWeight: 900,
               fontSize: "clamp(2.5rem, 8vw, 8rem)",
               color: "var(--khuzama-mist)",
               letterSpacing: 0,

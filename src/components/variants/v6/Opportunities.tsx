@@ -34,7 +34,7 @@ export function KhuzamaOpportunities() {
             className="mt-4 text-balance leading-[1.15]"
             style={{
               fontFamily: DISPLAY_FONT,
-              fontWeight: 800,
+              fontWeight: 900,
               fontSize: "clamp(1.875rem, 3.5vw, 3rem)",
               color: "var(--khuzama-mist)",
             }}
@@ -64,7 +64,7 @@ export function KhuzamaOpportunities() {
                   className="text-balance text-center"
                   style={{
                     fontFamily: DISPLAY_FONT,
-                    fontWeight: 800,
+                    fontWeight: 900,
                     fontSize: "clamp(2rem, 4vw, 2.75rem)",
                     color: "var(--khuzama-deep)",
                     letterSpacing: 0,

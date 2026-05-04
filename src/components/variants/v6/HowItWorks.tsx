@@ -28,7 +28,7 @@ export function KhuzamaHowItWorks() {
             className="mt-4 text-balance leading-[1.15]"
             style={{
               fontFamily: DISPLAY_FONT,
-              fontWeight: 800,
+              fontWeight: 900,
               fontSize: "clamp(1.875rem, 3.5vw, 3rem)",
               color: "var(--khuzama-deep)",
             }}

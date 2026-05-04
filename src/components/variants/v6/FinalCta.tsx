@@ -25,7 +25,7 @@ export function KhuzamaFinalCta() {
             className="text-balance leading-[1.05]"
             style={{
               fontFamily: DISPLAY_FONT,
-              fontWeight: 800,
+              fontWeight: 900,
               fontSize: "clamp(2rem, 5vw, 4rem)",
               color: "#FBFAF7",
             }}
