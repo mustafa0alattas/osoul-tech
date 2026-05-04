@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { DirectionProvider } from "@base-ui/react/direction-provider";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -102,13 +103,15 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <NextIntlClientProvider>
-          <Header />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-          <CookieBanner />
+          <DirectionProvider direction={dir}>
+            <Header />
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <FloatingWhatsApp />
+            <CookieBanner />
+          </DirectionProvider>
         </NextIntlClientProvider>
       </body>
     </html>
