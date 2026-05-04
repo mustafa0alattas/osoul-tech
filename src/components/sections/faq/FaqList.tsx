@@ -99,7 +99,7 @@ export function FaqList({
                 type="button"
                 onClick={() => setQuery("")}
                 aria-label="clear search"
-                className="absolute top-1/2 inline-flex size-8 -translate-y-1/2 items-center justify-center rounded-md text-muted-ink transition-colors hover:bg-parchment hover:text-ink end-2"
+                className="absolute top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-md text-muted-ink transition-colors hover:bg-parchment hover:text-ink end-1 sm:size-8 sm:end-2"
               >
                 <X className="size-4" aria-hidden="true" />
               </button>

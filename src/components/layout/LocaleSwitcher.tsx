@@ -31,7 +31,7 @@ export function LocaleSwitcher({ variant = "ghost" }: Props) {
           router.replace(pathname, { locale: next });
         })
       }
-      className="h-10 gap-1.5 px-3 sm:h-9"
+      className="h-11 gap-1.5 px-3 sm:h-9"
       aria-label={t("switchTo")}
     >
       <Languages className="size-4" aria-hidden="true" />

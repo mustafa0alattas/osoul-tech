@@ -54,7 +54,7 @@ export function CookieBanner() {
           onClick={accept}
           className={cn(
             buttonVariants({ size: "sm" }),
-            "h-9 bg-osoul-pivot px-4 text-paper hover:bg-osoul-pivot/90",
+            "h-11 bg-osoul-pivot px-4 text-paper hover:bg-osoul-pivot/90 sm:h-9",
           )}
         >
           {t("accept")}
@@ -63,7 +63,7 @@ export function CookieBanner() {
           href="/privacy"
           className={cn(
             buttonVariants({ variant: "outline", size: "sm" }),
-            "h-9 border-hairline bg-paper px-4 text-ink hover:bg-parchment",
+            "h-11 border-hairline bg-paper px-4 text-ink hover:bg-parchment sm:h-9",
           )}
         >
           {t("learnMore")}

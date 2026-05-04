@@ -239,6 +239,10 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    /* Defensive: no decorative element should cause horizontal scroll
+       at any viewport width (320px–5120px+). overflow-x: clip avoids
+       creating a scroll container the way overflow-x: hidden does. */
+    overflow-x: clip;
   }
   html {
     @apply font-sans;
