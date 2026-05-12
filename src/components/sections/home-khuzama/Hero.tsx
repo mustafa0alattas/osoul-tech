@@ -3,7 +3,6 @@ import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/layout/Container";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ShieldCheck } from "lucide-react";
 import { SaduStrip } from "./SaduMotif";
 
 const DISPLAY_FONT =
@@ -29,23 +28,15 @@ export function KhuzamaHero() {
 
       <Container className="relative max-w-[1280px] py-24 sm:py-32 lg:py-40">
         <div className="mx-auto flex min-h-[60vh] max-w-[58rem] flex-col items-center justify-center text-center lg:min-h-[72vh]">
-          {/* Issue / volume metadata */}
-          <p
-            className="text-[0.7rem] font-medium tracking-[0.22em]"
-            style={{ color: "var(--khuzama-light)" }}
-          >
-            {t("issueLabel")}
-          </p>
-
           {/* Eyebrow */}
           <p
-            className="mt-10 text-[0.78rem] font-medium tracking-[0.18em]"
+            className="text-[0.78rem] font-medium tracking-[0.18em]"
             style={{ color: "var(--khuzama-light)" }}
           >
             {t("heroEyebrow")}
           </p>
 
-          {/* Display headline (Tajawal 800) */}
+          {/* Display headline (Tajawal 900) */}
           <h1
             className="mt-7 text-balance leading-[1.05]"
             style={{
@@ -105,27 +96,6 @@ export function KhuzamaHero() {
             >
               {t("secondaryCta")}
             </Link>
-          </div>
-
-          {/* REGA badge */}
-          <div
-            className="mt-10 inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
-            style={{
-              borderColor: "rgba(230,224,244,0.25)",
-              backgroundColor: "rgba(230,224,244,0.08)",
-            }}
-          >
-            <ShieldCheck
-              className="size-3.5"
-              style={{ color: "var(--khuzama-light)" }}
-              aria-hidden="true"
-            />
-            <span
-              className="text-xs"
-              style={{ color: "var(--khuzama-mist)", opacity: 0.85 }}
-            >
-              {t("trustBadge")}
-            </span>
           </div>
         </div>
       </Container>

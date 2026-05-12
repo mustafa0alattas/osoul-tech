@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
-import { Hero } from "@/components/sections/Hero";
-import { Stats } from "@/components/sections/Stats";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Opportunities } from "@/components/sections/Opportunities";
-import { AudienceSelector } from "@/components/sections/AudienceSelector";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { KhuzamaHero } from "@/components/sections/home-khuzama/Hero";
+import { KhuzamaHowItWorks } from "@/components/sections/home-khuzama/HowItWorks";
+import { KhuzamaWhyUs } from "@/components/sections/home-khuzama/WhyUs";
+import { KhuzamaOpportunities } from "@/components/sections/home-khuzama/Opportunities";
 
 export async function generateMetadata({
   params,
@@ -20,13 +17,10 @@ export async function generateMetadata({
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <Stats />
-      <HowItWorks />
-      <WhyUs />
-      <Opportunities />
-      <AudienceSelector />
-      <FinalCta />
+      <KhuzamaHero />
+      <KhuzamaHowItWorks />
+      <KhuzamaWhyUs />
+      <KhuzamaOpportunities />
     </>
   );
 }

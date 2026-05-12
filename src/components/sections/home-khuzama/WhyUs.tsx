@@ -8,7 +8,7 @@ const DISPLAY_FONT =
 export function KhuzamaWhyUs() {
   const t = useTranslations("Variant6");
 
-  const reasons = [1, 2, 3, 4, 5, 6].map((i) => ({
+  const reasons = [1, 2, 3, 4, 5, 6, 7].map((i) => ({
     title: t(`why${i}Title`),
     body: t(`why${i}Body`),
   }));
@@ -39,7 +39,9 @@ export function KhuzamaWhyUs() {
           </p>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-[1100px] grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 2xl:grid-cols-6">
+        {/* 7 cards: 1col mobile / 2col tablet / 4col desktop.
+            Row 1 fills 4, row 2 holds 3 — clean grid, no orphan awkwardness. */}
+        <div className="mx-auto mt-14 grid max-w-[1100px] grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
           {reasons.map((reason, i) => (
             <article
               key={i}

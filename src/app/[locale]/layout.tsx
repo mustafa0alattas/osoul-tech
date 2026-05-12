@@ -1,10 +1,10 @@
-import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic, Tajawal } from "next/font/google";
 import { DirectionProvider } from "@base-ui/react/direction-provider";
 import { routing } from "@/i18n/routing";
+import { BetaBanner } from "@/components/layout/BetaBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
@@ -23,6 +23,13 @@ const plexSansArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-plex-arabic",
   subsets: ["arabic"],
   weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
+
+const tajawal = Tajawal({
+  variable: "--font-display-arabic",
+  subsets: ["arabic"],
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
@@ -47,13 +54,6 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const dir = locale === "ar" ? "rtl" : "ltr";
-
-  // Read pathname injected by proxy.ts middleware; used to scope variant
-  // palettes (e.g. /6 khuzama) to <body> so the shared Header / Footer
-  // inherit the override without modification.
-  const requestHeaders = await headers();
-  const pathname = requestHeaders.get("x-osoul-pathname") ?? "";
-  const variantAttr = /^\/(?:ar|en)\/6(?:\/|$)/.test(pathname) ? "khuzama" : undefined;
 
   const t = await getTranslations({ locale, namespace: "Seo" });
   const tA11y = await getTranslations({ locale, namespace: "A11y" });
@@ -92,11 +92,11 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${plexSans.variable} ${plexSansArabic.variable}`}
+      className={`${plexSans.variable} ${plexSansArabic.variable} ${tajawal.variable}`}
       suppressHydrationWarning
     >
       <body
-        data-variant={variantAttr}
+        data-variant="khuzama"
         className="flex min-h-screen flex-col bg-background font-sans text-foreground"
       >
         <a
@@ -115,6 +115,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <DirectionProvider direction={dir}>
+            <BetaBanner />
             <Header />
             <main id="main-content" className="flex-1">
               {children}
