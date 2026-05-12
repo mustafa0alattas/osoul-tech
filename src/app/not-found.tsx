@@ -26,7 +26,7 @@ export default function RootNotFound() {
               fontSize: "0.75rem",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
-              color: "#0F63A5",
+              color: "#3D2C8D",
               marginBottom: "1rem",
             }}
           >
@@ -60,7 +60,7 @@ export default function RootNotFound() {
               alignItems: "center",
               padding: "10px 20px",
               borderRadius: "10px",
-              backgroundColor: "#2391A0",
+              backgroundColor: "#6B4FA0",
               color: "#FBFAF7",
               fontSize: "0.95rem",
               fontWeight: 600,

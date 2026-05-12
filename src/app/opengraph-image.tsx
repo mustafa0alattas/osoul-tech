@@ -51,7 +51,7 @@ export default async function Image() {
               fontWeight: 700,
               letterSpacing: "-0.04em",
               lineHeight: 1,
-              color: "#0F63A5",
+              color: "#3D2C8D",
             }}
           >
             Osoul.Tech
@@ -83,7 +83,7 @@ export default async function Image() {
               width: "100%",
               borderRadius: 999,
               background:
-                "linear-gradient(90deg, #31AE9C 0%, #2391A0 50%, #0F63A5 100%)",
+                "linear-gradient(90deg, #B19CD9 0%, #7851A9 50%, #3D2C8D 100%)",
             }}
           />
           <div
