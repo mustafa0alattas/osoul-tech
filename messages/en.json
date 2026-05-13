@@ -107,9 +107,7 @@
     "investorTitle": "Investor",
     "investorBody": "For individuals seeking accessible, diversified real estate exposure.",
     "ownerTitle": "Property Owner",
-    "ownerBody": "For those seeking partial liquidity without selling the whole asset.",
-    "partnerTitle": "Partner / Institution",
-    "partnerBody": "For banks, developers, and financial advisors."
+    "ownerBody": "For those seeking partial liquidity without selling the whole asset."
   },
   "FinalCta": {
     "headline": "Be among the first to register",
@@ -124,7 +122,6 @@
     "step2Eyebrow": "Step 2",
     "step2HeadlineInvestor": "Complete your details as an Investor",
     "step2HeadlineOwner": "Complete your details as a Property Owner",
-    "step2HeadlinePartner": "Complete your details as a Partner",
     "step3HeadlineSuccess": "Your interest has been registered",
     "back": "Change selection",
     "backHome": "Back to home",
@@ -141,9 +138,7 @@
       "investorTitle": "Investor",
       "investorBody": "I'm looking for income-producing real estate opportunities.",
       "ownerTitle": "Property Owner",
-      "ownerBody": "I own a property and would like to list it on the platform.",
-      "partnerTitle": "Partner / Institution",
-      "partnerBody": "I represent a company or institution and want to partner with you."
+      "ownerBody": "I own a property and would like to list it on the platform."
     },
     "fields": {
       "fullName": "Full name",
@@ -166,14 +161,7 @@
       "estimatedValue": "Estimated value",
       "currentlyRented": "Is the property currently rented?",
       "notes": "Notes",
-      "notesPh": "Anything else you'd like to share (optional).",
-      "companyName": "Company / Organization name",
-      "companyNamePh": "Official name of the entity",
-      "position": "Position",
-      "positionPh": "Your title",
-      "partnershipType": "Partnership type",
-      "description": "Brief description",
-      "descriptionPh": "Outline the partnership idea briefly."
+      "notesPh": "Anything else you'd like to share (optional)."
     },
     "options": {
       "yes": "Yes",
@@ -216,12 +204,7 @@
       "valueUnder1m": "Less than 1M SAR",
       "value1to5m": "1 - 5M SAR",
       "value5to20m": "5 - 20M SAR",
-      "valueAbove20m": "More than 20M SAR",
-      "partFinance": "Financial",
-      "partTech": "Technology",
-      "partMarketing": "Marketing",
-      "partRealEstate": "Real estate",
-      "partOther": "Other"
+      "valueAbove20m": "More than 20M SAR"
     },
     "consent": {
       "label": "I consent to my data being processed per the Privacy Policy and to be contacted about the platform launch."
@@ -243,11 +226,6 @@
       "estimatedValueRequired": "Please pick an estimated value.",
       "currentlyRentedRequired": "Please answer.",
       "notesTooLong": "Notes exceed 500 characters.",
-      "companyNameRequired": "Please enter the company / organization name.",
-      "positionRequired": "Please enter your position.",
-      "partnershipTypeRequired": "Please pick a partnership type.",
-      "descriptionRequired": "Please write a brief description.",
-      "descriptionTooLong": "Description exceeds 1000 characters.",
       "consentRequired": "Consent is required to complete registration."
     }
   },
@@ -267,7 +245,7 @@
     "s2List3": "Technical data collected automatically: IP address, browser type, pages visited, and visit timestamps.",
     "s3Title": "How we use your data",
     "s3List1": "To contact you about the platform launch and updates on relevant opportunities.",
-    "s3List2": "To send introductory content tailored to your registration type (investor, owner, partner).",
+    "s3List2": "To send introductory content tailored to your registration type (investor or property owner).",
     "s3List3": "To improve user experience and develop the platform.",
     "s3List4": "To comply with regulations and instructions issued by supervisory authorities.",
     "s4Title": "Data sharing",
@@ -392,7 +370,7 @@
     },
     "contact": {
       "title": "Contact us",
-      "description": "Investor and partner enquiries via email and WhatsApp. We respond within one business day.",
+      "description": "Investor enquiries via email and WhatsApp. We respond within one business day.",
       "keywords": "contact, Osoul.Tech, Riyadh, enquiries"
     },
     "registerInterest": {
@@ -534,7 +512,7 @@
   "Contact": {
     "heroEyebrow": "Contact us",
     "heroHeadline": "We're here to answer your questions",
-    "heroSub": "Before the official launch, we take investor and partner enquiries through the channels listed below. We reply within one business day.",
+    "heroSub": "Before the official launch, we take investor enquiries through the channels listed below. We reply within one business day.",
     "methodsEyebrow": "Channels",
     "emailLabel": "Email",
     "emailNote": "We reply within 24 hours on business days.",
@@ -617,8 +595,7 @@
     "issueLabel": "Year One · Spring 2026 · From the Land of Khuzama",
     "trustBadge": "Within the regulatory sandbox of the General Authority for Real Estate",
     "heroEyebrow": "Saudi hospitality, digital",
-    "heroHeadline": "Own a fraction of Saudi Arabia's real estate future",
-    "heroSub": "Invest in Saudi real estate, starting from just 1,000 SAR",
+    "heroHeadline": "Invest in Saudi real estate, starting from just 1,000 SAR",
     "primaryCta": "Register interest",
     "secondaryCta": "About us",
     "howEyebrow": "From threshold to majlis",
@@ -634,7 +611,7 @@
     "step5Title": "Receive your returns",
     "step5Body": "Periodic rental distributions deposited directly to your account.",
     "whyEyebrow": "Why us",
-    "whyHeadline": "Seven reasons on the khuzama carpet.",
+    "whyHeadline": "Seven reasons in Osoul.Tech.",
     "whyLead": "Each reason verifiable, not a slogan.",
     "why1Title": "Officially registered title deeds",
     "why1Body": "Your share is documented by an official title deed registered in your name with the relevant authorities.",

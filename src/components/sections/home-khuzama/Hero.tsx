@@ -36,12 +36,12 @@ export function KhuzamaHero() {
             {t("heroEyebrow")}
           </p>
 
-          {/* Display headline (Tajawal 900) */}
+          {/* Display headline (Tajawal 800) */}
           <h1
             className="mt-7 text-balance leading-[1.05]"
             style={{
               fontFamily: DISPLAY_FONT,
-              fontWeight: 900,
+              fontWeight: 800,
               fontSize: "clamp(2.5rem, 8vw, 8rem)",
               color: "var(--khuzama-mist)",
               letterSpacing: 0,
@@ -60,16 +60,8 @@ export function KhuzamaHero() {
             />
           </div>
 
-          {/* Subhead */}
-          <p
-            className="mt-12 max-w-[55ch] text-pretty text-base leading-relaxed sm:text-lg"
-            style={{ color: "var(--khuzama-mist)", opacity: 0.85 }}
-          >
-            {t("heroSub")}
-          </p>
-
           {/* CTAs */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:mt-12">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-3 sm:mt-14">
             <Link
               href="/register-interest"
               className={cn(
