@@ -4,9 +4,8 @@ import { z } from "zod";
 export const SAUDI_MOBILE_REGEX = /^(\+?966|0)?5\d{8}$/;
 
 export const NOTES_MAX_LEN = 500;
-export const DESCRIPTION_MAX_LEN = 1000;
 
-export const REGISTRATION_TYPES = ["investor", "owner", "partner"] as const;
+export const REGISTRATION_TYPES = ["investor", "owner"] as const;
 export type RegistrationType = (typeof REGISTRATION_TYPES)[number];
 
 export const INVESTMENT_AMOUNTS = [
@@ -41,14 +40,6 @@ export const ESTIMATED_VALUES = [
   "above20m",
 ] as const;
 
-export const PARTNERSHIP_TYPES = [
-  "finance",
-  "tech",
-  "marketing",
-  "realEstate",
-  "other",
-] as const;
-
 export const YES_NO = ["yes", "no"] as const;
 
 /**
@@ -72,11 +63,6 @@ export type ErrorBag = {
   estimatedValueRequired: string;
   currentlyRentedRequired: string;
   notesTooLong: string;
-  companyNameRequired: string;
-  positionRequired: string;
-  partnershipTypeRequired: string;
-  descriptionRequired: string;
-  descriptionTooLong: string;
   consentRequired: string;
 };
 
@@ -136,29 +122,9 @@ export function buildRegisterInterestSchema(e: ErrorBag) {
     consent,
   });
 
-  const partnerBranch = z.object({
-    type: z.literal("partner"),
-    fullName,
-    phone,
-    email,
-    city,
-    companyName: z.string().trim().min(2, e.companyNameRequired),
-    position: z.string().trim().min(2, e.positionRequired),
-    partnershipType: z
-      .array(z.enum(PARTNERSHIP_TYPES))
-      .min(1, e.partnershipTypeRequired),
-    description: z
-      .string()
-      .trim()
-      .min(10, e.descriptionRequired)
-      .max(DESCRIPTION_MAX_LEN, e.descriptionTooLong),
-    consent,
-  });
-
   return z.discriminatedUnion("type", [
     investorBranch,
     ownerBranch,
-    partnerBranch,
   ]);
 }
 
@@ -167,4 +133,3 @@ export type RegisterInterestValues = z.infer<
 >;
 export type InvestorValues = Extract<RegisterInterestValues, { type: "investor" }>;
 export type OwnerValues = Extract<RegisterInterestValues, { type: "owner" }>;
-export type PartnerValues = Extract<RegisterInterestValues, { type: "partner" }>;

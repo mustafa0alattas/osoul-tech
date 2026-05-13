@@ -20,7 +20,6 @@ import {
   ArrowRight,
   Building2,
   CircleCheck,
-  Handshake,
   Loader2,
   TrendingUp,
 } from "lucide-react";
@@ -52,13 +51,11 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import {
   buildRegisterInterestSchema,
-  DESCRIPTION_MAX_LEN,
   ESTIMATED_VALUES,
   HOLDING_PERIODS,
   INVESTMENT_AMOUNTS,
   NOTES_MAX_LEN,
   OWNER_PROPERTY_TYPES,
-  PARTNERSHIP_TYPES,
   PROPERTY_PREFS,
   REGISTRATION_TYPES,
   YES_NO,
@@ -278,7 +275,6 @@ type TypeCardsProps = {
 const TYPE_ICONS: Record<RegistrationType, ReactNode> = {
   investor: <TrendingUp className="size-6" aria-hidden="true" />,
   owner: <Building2 className="size-6" aria-hidden="true" />,
-  partner: <Handshake className="size-6" aria-hidden="true" />,
 };
 
 function TypeCards({ selected, onSelect }: TypeCardsProps) {
@@ -286,7 +282,7 @@ function TypeCards({ selected, onSelect }: TypeCardsProps) {
   return (
     <div
       role="radiogroup"
-      className="grid grid-cols-1 gap-4 sm:grid-cols-3"
+      className="grid grid-cols-1 gap-4 sm:grid-cols-2"
     >
       {REGISTRATION_TYPES.map((key, i) => {
         const isSelected = selected === key;
@@ -358,11 +354,7 @@ function Step2Form({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   const headlineKey =
-    type === "investor"
-      ? "step2HeadlineInvestor"
-      : type === "owner"
-        ? "step2HeadlineOwner"
-        : "step2HeadlinePartner";
+    type === "investor" ? "step2HeadlineInvestor" : "step2HeadlineOwner";
 
   return (
     <Form {...form}>
@@ -494,10 +486,8 @@ function Step2Form({
         {/* Type-specific */}
         {type === "investor" ? (
           <InvestorFields form={form} />
-        ) : type === "owner" ? (
-          <OwnerFields form={form} />
         ) : (
-          <PartnerFields form={form} />
+          <OwnerFields form={form} />
         )}
 
         <ConsentField form={form} />
@@ -843,133 +833,6 @@ function OwnerFields({
   );
 }
 
-function PartnerFields({
-  form,
-}: {
-  form: UseFormReturn<RegisterInterestValues>;
-}) {
-  const tFields = useTranslations("Register.fields");
-  const tOptions = useTranslations("Register.options");
-
-  const partOpts = PARTNERSHIP_TYPES.map((v) => ({
-    value: v,
-    label: tOptions(
-      v === "finance"
-        ? "partFinance"
-        : v === "tech"
-          ? "partTech"
-          : v === "marketing"
-            ? "partMarketing"
-            : v === "realEstate"
-              ? "partRealEstate"
-              : "partOther",
-    ),
-  }));
-
-  const description =
-    ((form.watch("description" as never) as unknown as string | undefined) ??
-      "");
-
-  return (
-    <section className="space-y-8">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField
-          control={form.control}
-          name={"companyName" as never}
-          render={({ field }) => {
-            const f = field as unknown as TextFieldShape;
-            return (
-              <FormItem>
-                <FormLabel required>{tFields("companyName")}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={tFields("companyNamePh")}
-                    aria-required="true"
-                    className="h-11 rounded-[10px] border-hairline bg-paper text-base focus-visible:border-osoul-pivot focus-visible:ring-osoul-pivot/30"
-                    autoComplete="organization"
-                    name={f.name}
-                    value={f.value ?? ""}
-                    onChange={f.onChange}
-                    onBlur={f.onBlur}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-
-        <FormField
-          control={form.control}
-          name={"position" as never}
-          render={({ field }) => {
-            const f = field as unknown as TextFieldShape;
-            return (
-              <FormItem>
-                <FormLabel required>{tFields("position")}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={tFields("positionPh")}
-                    aria-required="true"
-                    autoComplete="organization-title"
-                    className="h-11 rounded-[10px] border-hairline bg-paper text-base focus-visible:border-osoul-pivot focus-visible:ring-osoul-pivot/30"
-                    name={f.name}
-                    value={f.value ?? ""}
-                    onChange={f.onChange}
-                    onBlur={f.onBlur}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-      </div>
-
-      <Controller
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        control={form.control as any}
-        name="partnershipType"
-        render={({ field, fieldState }) => (
-          <FieldBlock
-            label={tFields("partnershipType")}
-            required
-            error={fieldState.error?.message}
-          >
-            <ChipMultiSelect
-              groupLabel={tFields("partnershipType")}
-              values={(field.value as string[]) ?? []}
-              onChange={field.onChange}
-              options={partOpts}
-            />
-          </FieldBlock>
-        )}
-      />
-
-      <Controller
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        control={form.control as any}
-        name="description"
-        render={({ field, fieldState }) => (
-          <FieldBlock
-            label={tFields("description")}
-            required
-            error={fieldState.error?.message}
-          >
-            <TextareaWithCounter
-              placeholder={tFields("descriptionPh")}
-              max={DESCRIPTION_MAX_LEN}
-              current={description.length}
-              {...field}
-              value={(field.value as string) ?? ""}
-            />
-          </FieldBlock>
-        )}
-      />
-    </section>
-  );
-}
-
 function FieldBlock({
   label,
   hint,
@@ -1118,23 +981,10 @@ const DEFAULTS: Record<RegistrationType, Partial<RegisterInterestValues>> = {
     consent: false,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any,
-  partner: {
-    type: "partner",
-    fullName: "",
-    phone: "",
-    email: "",
-    city: "",
-    companyName: "",
-    position: "",
-    partnershipType: [],
-    description: "",
-    consent: false,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any,
 };
 
 function isRegistrationType(v: string | null): v is RegistrationType {
-  return v === "investor" || v === "owner" || v === "partner";
+  return v === "investor" || v === "owner";
 }
 
 export function RegisterInterestForm() {
@@ -1185,11 +1035,6 @@ export function RegisterInterestForm() {
       estimatedValueRequired: tErrors("estimatedValueRequired"),
       currentlyRentedRequired: tErrors("currentlyRentedRequired"),
       notesTooLong: tErrors("notesTooLong"),
-      companyNameRequired: tErrors("companyNameRequired"),
-      positionRequired: tErrors("positionRequired"),
-      partnershipTypeRequired: tErrors("partnershipTypeRequired"),
-      descriptionRequired: tErrors("descriptionRequired"),
-      descriptionTooLong: tErrors("descriptionTooLong"),
       consentRequired: tErrors("consentRequired"),
     }),
     [tErrors],
